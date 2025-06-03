@@ -1,6 +1,7 @@
 const container = document.querySelector(".container");
 const input = document.querySelector("#input");
 const clear = document.querySelector("#clear");
+let size = 16;
 
 function generateGrid(size) {
   container.innerHTML = "";
@@ -14,10 +15,13 @@ function generateGrid(size) {
   }
 }
 
-generateGrid(16);
+generateGrid(size);
 
 input.addEventListener("input", () => {
-  const size = parseInt(input.value, 10);
+  const newSize = parseInt(input.value, 10);
+  if (newSize === 1||newSize === 2||newSize === 4||newSize === 8||newSize === 16||newSize === 32||newSize === 64){
+    size = newSize;
+  }
   if (!isNaN(size) && size > 0) {
     generateGrid(size);
   }
